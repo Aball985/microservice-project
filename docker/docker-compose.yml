@@ -1,0 +1,50 @@
+# Docker Compose file
+version: "3.8"
+
+# Services
+services:
+  # Frontend
+  angular_frontend_service:
+    container_name: angular_frontend_container
+    build:
+      context: ../frontend
+    ports:
+      - "54200:8080"
+    networks:
+      - central_network
+    environment:
+      - API_BASE_URL=http://localhost:54201/fit-service/api
+  # Backend Microservices
+  fit_service:
+    container_name: fit_service_container
+    build:
+      context: ../services/FitService
+      # "HOST_PORT:CONTAINER_PORT"
+    ports:
+      - "54201:8081"
+    networks:
+      - central_network
+    environment:
+      - DB_HOST=value
+      - DB_PORT=value
+      - DB_USERNAME=value
+      - DB_PASSWORD=value
+      - DB_NAME=value
+      - LOG_LEVEL=value
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/health"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+# Networks
+networks:
+  central_network:
+    driver: bridge
+#Created the services
+#Add docker file to each service
+#Config docker compose file
+# docker-compose build
+# docker-compose up -d
+# Check container health status: docker-compose ps
