@@ -13,7 +13,8 @@ services:
     networks:
       - central_network
     environment:
-      - API_BASE_URL=http://localhost:54201/fit-service/api
+      - API_BASE_URL=http://fit_service:8081/fit-service/api
+
   # Backend Microservices
   fit_service:
     container_name: fit_service_container
