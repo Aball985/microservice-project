@@ -19,7 +19,7 @@ services:
   fit_service:
     container_name: fit_service_container
     build:
-      context: ../services/FitService
+      context: ../services/TodoApi
       # "HOST_PORT:CONTAINER_PORT"
     ports:
       - "54201:8081"
