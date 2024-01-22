@@ -5,8 +5,10 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { bootstrapChevronDown } from '@ng-icons/bootstrap-icons';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { selectCurrentUser } from '../../../store/selectors/auth/auth.selector';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat';
 @Component({
   standalone: true,
   selector: 'app-navbar',
@@ -16,11 +18,23 @@ import { selectCurrentUser } from '../../../store/selectors/auth/auth.selector';
   viewProviders: [provideIcons({ bootstrapChevronDown })],
 })
 export class NavbarComponent implements OnInit {
-  currentUser$!: Observable<firebase.default.User | null>;
+  currentUser$!: Observable<firebase.User | null>;
 
   isProfileOpen: boolean = false;
 
-  constructor(private authService: AuthService, private store: Store) {}
+  constructor(
+    private authService: AuthService,
+    private store: Store,
+    private afAuth: AngularFireAuth
+  ) {
+    // this.afAuth
+    //   .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    //   .then(() => {
+    //     this.afAuth.onAuthStateChanged((user) => {
+    //       this.currentUser$ = of(user);
+    //     });
+    //   });
+  }
 
   ngOnInit(): void {
     this.getAuthState();

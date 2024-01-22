@@ -1,13 +1,15 @@
 {
-  "hosting": [
-    {
-      "target": "ng-fitster",
-      "source": ".",
-      "frameworksBackend": {
-        "region": "us-central1"
-      }
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
     }
-  ],
+  },
   "headers": [
     {
       "source": "**/*",
