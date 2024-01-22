@@ -27,6 +27,18 @@ app-jw-modal {
     border-radius: 8px;
     min-width: 30rem;
   }
+
+  .top-modal {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    justify-content: flex-end;
+    ng-icon {
+      font-weight: 600;
+      font-size: 1.75rem;
+      cursor: pointer;
+    }
+  }
 }
 
 body.jw-modal-open {

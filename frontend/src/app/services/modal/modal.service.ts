@@ -28,12 +28,12 @@ export class ModalService {
       throw new Error(`modal '${id}' not found`);
     }
 
-    modal.open();
+    modal.openModal();
   }
 
   close() {
     // close the modal that is currently open
     const modal = this.modals.find((x) => x.isOpen);
-    modal?.close();
+    modal?.closeModal();
   }
 }
