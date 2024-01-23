@@ -19,15 +19,14 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ModalService } from '../../../services/modal/modal.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  bootstrapArrowBarLeft,
-  bootstrapArrowBarRight,
-} from '@ng-icons/bootstrap-icons';
+import { NgIconComponent } from '@ng-icons/core';
+import { FitSidebarComponent } from '../../ui/fit-sidebar/fit-sidebar.component';
 
 @Component({
   selector: 'app-fits',
   standalone: true,
+  templateUrl: './fits.component.html',
+  styleUrl: './fits.component.scss',
   imports: [
     TrackMouseCoordinatesDirective,
     AsyncPipe,
@@ -37,11 +36,7 @@ import {
     ModalComponent,
     NgIconComponent,
     CommonModule,
-  ],
-  templateUrl: './fits.component.html',
-  styleUrl: './fits.component.scss',
-  viewProviders: [
-    provideIcons({ bootstrapArrowBarLeft, bootstrapArrowBarRight }),
+    FitSidebarComponent,
   ],
 })
 export class FitsComponent implements OnInit {
@@ -115,10 +110,6 @@ export class FitsComponent implements OnInit {
     this.getCoordinateStoreSelects();
     this.handleLoadingPoints();
     this.countPointLength();
-  }
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   openAllLinks(fromModal: boolean = false): void {

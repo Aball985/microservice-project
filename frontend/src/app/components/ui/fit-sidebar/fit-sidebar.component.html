@@ -1,0 +1,24 @@
+<div
+  [ngClass]="{
+    'sidebar-icon-closed': !sidebarToggleStatus,
+    'sidebar-icon-open': sidebarToggleStatus
+  }"
+  (click)="toggleSidebar()"
+  [title]="sidebarToggleStatus ? 'Close Sidebar' : 'Open Sidebar'"
+>
+  <ng-icon
+    [name]="
+      sidebarToggleStatus ? 'bootstrapArrowBarRight' : 'bootstrapArrowBarLeft'
+    "
+  >
+  </ng-icon>
+</div>
+@if(sidebarToggleStatus){
+<app-comments></app-comments>
+}
+<div
+  [ngClass]="{
+    'sidebar-closed': !sidebarToggleStatus,
+    'sidebar-open': sidebarToggleStatus
+  }"
+></div>
