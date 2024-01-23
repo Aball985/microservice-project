@@ -10,10 +10,20 @@ import {
   selectYCoordinate,
 } from '../../../store/selectors/mouse/mouse-coordinates.selector';
 import { TrackMouseCoordinatesDirective } from '../../../directives/mouse-coordinates.directive';
-import { AsyncPipe, NgOptimizedImage, JsonPipe } from '@angular/common';
+import {
+  AsyncPipe,
+  NgOptimizedImage,
+  JsonPipe,
+  CommonModule,
+} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalService } from '../../../services/modal/modal.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import {
+  bootstrapArrowBarLeft,
+  bootstrapArrowBarRight,
+} from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'app-fits',
@@ -25,9 +35,14 @@ import { ModalComponent } from '../../shared/modal/modal.component';
     NgOptimizedImage,
     JsonPipe,
     ModalComponent,
+    NgIconComponent,
+    CommonModule,
   ],
   templateUrl: './fits.component.html',
   styleUrl: './fits.component.scss',
+  viewProviders: [
+    provideIcons({ bootstrapArrowBarLeft, bootstrapArrowBarRight }),
+  ],
 })
 export class FitsComponent implements OnInit {
   x_Coord$!: Observable<number>;
@@ -37,6 +52,7 @@ export class FitsComponent implements OnInit {
   isPointsVisible: boolean = true;
   isLinkModalVisible: boolean = false;
   isCursorPointVisible: boolean = false;
+  isSidebarOpen: boolean = false;
 
   currentPointsLength: number = 0;
   maxNumberOfCords: number = 10;
@@ -99,6 +115,10 @@ export class FitsComponent implements OnInit {
     this.getCoordinateStoreSelects();
     this.handleLoadingPoints();
     this.countPointLength();
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   openAllLinks(fromModal: boolean = false): void {

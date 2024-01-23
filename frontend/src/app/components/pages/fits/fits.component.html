@@ -87,6 +87,27 @@
       ></div>
     </div>
     }}
+    <div
+      [ngClass]="{
+        'sidebar-icon-closed': !isSidebarOpen,
+        'sidebar-icon-open': isSidebarOpen
+      }"
+      (click)="toggleSidebar()"
+      [title]="isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'"
+    >
+      <ng-icon
+        [name]="
+          isSidebarOpen ? 'bootstrapArrowBarRight' : 'bootstrapArrowBarLeft'
+        "
+      >
+      </ng-icon>
+    </div>
+    <div
+      [ngClass]="{
+        'sidebar-closed': !isSidebarOpen,
+        'sidebar-open': isSidebarOpen
+      }"
+    ></div>
   </div>
   <div class="button-container">
     <button
