@@ -10,6 +10,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment, firebaseProviders } from './environment';
 import { fitReducer } from './store/reducers/mouse/mouse-coordinates.reducer';
 import { authReducer } from './store/reducers/auth/auth.reducer';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,7 @@ export const appConfig: ApplicationConfig = {
       fit: fitReducer,
       auth: authReducer,
     }),
+    provideHttpClient(),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideAnimations(),

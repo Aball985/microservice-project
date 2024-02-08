@@ -21,6 +21,7 @@ import { ModalService } from '../../../services/modal/modal.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { FitSidebarComponent } from '../../ui/fit-sidebar/fit-sidebar.component';
+import { QrCodeComponent } from '../../ui/qr-code/qr-code.component';
 
 @Component({
   selector: 'app-fits',
@@ -37,9 +38,11 @@ import { FitSidebarComponent } from '../../ui/fit-sidebar/fit-sidebar.component'
     NgIconComponent,
     CommonModule,
     FitSidebarComponent,
+    QrCodeComponent,
   ],
 })
 export class FitsComponent implements OnInit {
+  uuid: string = crypto.randomUUID();
   x_Coord$!: Observable<number>;
   y_Coord$!: Observable<number>;
   safeUrl!: SafeResourceUrl;

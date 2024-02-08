@@ -90,8 +90,10 @@
     <app-fit-sidebar
       [sidebarToggleStatus]="isSidebarOpen"
       style="height: 100%"
-    ></app-fit-sidebar>
+    />
+    <app-qr-code [qrCode]="uuid" />
   </div>
+  {{ uuid }}
   <div class="button-container">
     <button
       [disabled]="!points.length"
