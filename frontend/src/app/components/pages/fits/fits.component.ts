@@ -22,6 +22,7 @@ import { ModalComponent } from '../../shared/modal/modal.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { FitSidebarComponent } from '../../ui/fit-sidebar/fit-sidebar.component';
 import { QrCodeComponent } from '../../ui/qr-code/qr-code.component';
+import { NgxSpinnerModule, NgxSpinnerService, Spinner } from 'ngx-spinner';
 
 @Component({
   selector: 'app-fits',
@@ -39,7 +40,9 @@ import { QrCodeComponent } from '../../ui/qr-code/qr-code.component';
     CommonModule,
     FitSidebarComponent,
     QrCodeComponent,
+    NgxSpinnerModule,
   ],
+  schemas: [],
 })
 export class FitsComponent implements OnInit {
   uuid: string = crypto.randomUUID();
@@ -58,6 +61,18 @@ export class FitsComponent implements OnInit {
   linkInputText: string = '';
 
   points: MouseCoordinatesState[] = [];
+
+  spinnerConfig: Spinner = {
+    bdColor: 'red',
+    fullScreen: true,
+    color: 'green',
+    size: 'large',
+    showSpinner: true,
+  };
+
+  public get anyLinksContainText(): boolean {
+    return this.points.some((items) => items.link?.length);
+  }
 
   testPoints: MouseCoordinatesState[] = [
     {
@@ -106,13 +121,21 @@ export class FitsComponent implements OnInit {
     private store: Store,
     private afAuth: AngularFireAuth,
     private domSanitizer: DomSanitizer,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private spinnnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.getCoordinateStoreSelects();
     this.handleLoadingPoints();
     this.countPointLength();
+  }
+
+  spinnerTest() {
+    this.spinnnerService.show('primarys');
+    setTimeout(() => {
+      this.spinnnerService.hide('primarys');
+    }, 5000);
   }
 
   openAllLinks(fromModal: boolean = false): void {
@@ -122,7 +145,9 @@ export class FitsComponent implements OnInit {
         (point) => point.link
       );
 
-      this.asyncOpenAllLinks(filtered);
+      this.asyncOpenAllLinks(filtered).finally(() => {
+        this.closeModal();
+      });
     }
   }
 
@@ -208,7 +233,7 @@ export class FitsComponent implements OnInit {
     this.afAuth.signOut();
   }
 
-  closeModal() {
+  closeModal(): void {
     this.modalService.close();
   }
 }

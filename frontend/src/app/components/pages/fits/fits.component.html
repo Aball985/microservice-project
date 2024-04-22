@@ -1,6 +1,9 @@
 <div class="fit-wrapper">
   <h1 class="title">Welcome, to Fitster</h1>
   <h2>Points left: {{ maxNumberOfCords - points.length }}</h2>
+  <ngx-spinner type="ball-scale-multiple">
+    <p class="loading">Loading Awesomeness...</p>
+  </ngx-spinner>
   <div
     appTrackMouseCoordinates
     class="fit"
@@ -93,8 +96,8 @@
     />
     <app-qr-code [qrCode]="uuid" />
   </div>
-  {{ uuid }}
   <div class="button-container">
+    @if (points.length) {
     <button
       [disabled]="!points.length"
       class="clear-button"
@@ -103,6 +106,7 @@
     >
       Clear all points
     </button>
+    } @if (points.length) {
     <button
       [disabled]="!points.length"
       type="button"
@@ -111,18 +115,18 @@
     >
       {{ isPointsVisible ? "Hide" : "Show" }} all points
     </button>
-    @if (points.length && currentPointsLength !== points.length) {
+    } @if (points.length && currentPointsLength !== points.length) {
     <button type="button" class="clear-button" (click)="undoLastPoint()">
       Undo last point
     </button>
-    } @if(points.length){
+    } @if(points.length && anyLinksContainText){
     <button type="button" class="clear-button" (click)="openAllLinks()">
       Open all links
     </button>
     }
   </div>
 </div>
-
+<!-- modal -->
 <app-jw-modal id="openAllFitWarning">
   <div class="modal-wrapper">
     <h1>Warning:</h1>

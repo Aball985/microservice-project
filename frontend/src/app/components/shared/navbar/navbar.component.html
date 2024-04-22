@@ -39,7 +39,6 @@
       <div class="login-wrapper">
         @if (currentUser$ | async; as user) {
         <div class="profile-wrapper" (click)="isProfileOpen = !isProfileOpen">
-          <img class="user-img" [src]="user.photoURL" alt="user-image" />
           <span>{{ user.displayName }}</span>
           <ng-icon class="icon" name="bootstrapChevronDown"></ng-icon>
         </div>
