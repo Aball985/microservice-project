@@ -24,14 +24,14 @@
     "@angular/platform-server": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.0.7",
-    "@ng-icons/bootstrap-icons": "^26.3.0",
-    "@ng-icons/core": "^26.3.0",
+    "@ng-icons/bootstrap-icons": "^27.4.0",
+    "@ng-icons/core": "^27.4.0",
     "@ngrx/effects": "^17.0.1",
     "@ngrx/store": "^17.0.1",
     "@ngrx/store-devtools": "^17.0.1",
     "express": "^4.18.2",
     "firebase": "^10.7.1",
-    "ngx-spinner": "^16.0.2",
+    "ngx-spinner": "^17.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.2"
@@ -47,6 +47,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.2.2"
+    "typescript": "^5.4.5"
   }
 }
