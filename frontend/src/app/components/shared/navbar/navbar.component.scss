@@ -60,6 +60,7 @@
 .profile-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem 1rem;
   position: relative;
@@ -68,6 +69,7 @@
   &:hover {
     background-color: rgba(128, 128, 128, 0.1);
   }
+  width: 10rem;
 }
 
 .user-img {
@@ -81,8 +83,8 @@
 
 .profile-open {
   position: absolute;
-  top: 4.6rem;
-  width: 9.75rem;
+  top: 3.85rem;
+  width: 10rem;
   background-color: #fff;
   ul {
     list-style: none;

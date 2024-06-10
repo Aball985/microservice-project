@@ -20,7 +20,7 @@ import { bootstrapXLg } from '@ng-icons/bootstrap-icons';
   viewProviders: [provideIcons({ bootstrapXLg })],
 })
 export class ModalComponent implements OnInit, OnDestroy {
-  @Input() id?: string;
+  @Input({ required: true }) id: string = '';
   isOpen = false;
   private element: HTMLElement;
 

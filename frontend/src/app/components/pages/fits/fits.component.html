@@ -1,9 +1,6 @@
 <div class="fit-wrapper">
   <h1 class="title">Welcome, to Fitster</h1>
   <h2>Points left: {{ maxNumberOfCords - points.length }}</h2>
-  <ngx-spinner type="ball-scale-multiple">
-    <p class="loading">Loading Awesomeness...</p>
-  </ngx-spinner>
   <div
     appTrackMouseCoordinates
     class="fit"
@@ -127,7 +124,7 @@
   </div>
 </div>
 <!-- modal -->
-<app-jw-modal id="openAllFitWarning">
+<app-jw-modal [id]="'openAllFitWarning'">
   <div class="modal-wrapper">
     <h1>Warning:</h1>
     <p>Are you sure you want to open all links?</p>

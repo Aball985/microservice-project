@@ -22,7 +22,6 @@ import { ModalComponent } from '../../shared/modal/modal.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { FitSidebarComponent } from '../../ui/fit-sidebar/fit-sidebar.component';
 import { QrCodeComponent } from '../../ui/qr-code/qr-code.component';
-import { NgxSpinnerModule, NgxSpinnerService, Spinner } from 'ngx-spinner';
 
 @Component({
   selector: 'app-fits',
@@ -40,7 +39,6 @@ import { NgxSpinnerModule, NgxSpinnerService, Spinner } from 'ngx-spinner';
     CommonModule,
     FitSidebarComponent,
     QrCodeComponent,
-    NgxSpinnerModule,
   ],
   schemas: [],
 })
@@ -49,7 +47,6 @@ export class FitsComponent implements OnInit {
   x_Coord$!: Observable<number>;
   y_Coord$!: Observable<number>;
   safeUrl!: SafeResourceUrl;
-
   isPointsVisible: boolean = true;
   isLinkModalVisible: boolean = false;
   isCursorPointVisible: boolean = false;
@@ -61,14 +58,6 @@ export class FitsComponent implements OnInit {
   linkInputText: string = '';
 
   points: MouseCoordinatesState[] = [];
-
-  spinnerConfig: Spinner = {
-    bdColor: 'red',
-    fullScreen: true,
-    color: 'green',
-    size: 'large',
-    showSpinner: true,
-  };
 
   public get anyLinksContainText(): boolean {
     return this.points.some((items) => items.link?.length);
@@ -121,8 +110,7 @@ export class FitsComponent implements OnInit {
     private store: Store,
     private afAuth: AngularFireAuth,
     private domSanitizer: DomSanitizer,
-    private modalService: ModalService,
-    private spinnnerService: NgxSpinnerService
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -131,12 +119,7 @@ export class FitsComponent implements OnInit {
     this.countPointLength();
   }
 
-  spinnerTest() {
-    this.spinnnerService.show('primarys');
-    setTimeout(() => {
-      this.spinnnerService.hide('primarys');
-    }, 5000);
-  }
+  spinnerTest() {}
 
   openAllLinks(fromModal: boolean = false): void {
     this.modalService.open('openAllFitWarning');
