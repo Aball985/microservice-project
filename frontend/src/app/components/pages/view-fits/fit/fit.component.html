@@ -1,6 +1,4 @@
 <div class="fit-wrapper">
-  <h1 class="title">Welcome, to Fitster</h1>
-  <h2>Points left: {{ maxNumberOfCords - points.length }}</h2>
   <div
     appTrackMouseCoordinates
     class="fit"
@@ -94,16 +92,15 @@
     <app-qr-code [qrCode]="uuid" />
   </div>
   <div class="button-container">
-    @if (points.length) {
     <button
-      [disabled]="!points.length"
+      [disabled]="!points.length || !isPointsVisible"
       class="clear-button"
       type="button"
       (click)="clearPoints()"
     >
       Clear all points
     </button>
-    } @if (points.length) {
+
     <button
       [disabled]="!points.length"
       type="button"
@@ -112,18 +109,35 @@
     >
       {{ isPointsVisible ? "Hide" : "Show" }} all points
     </button>
-    } @if (points.length && currentPointsLength !== points.length) {
-    <button type="button" class="clear-button" (click)="undoLastPoint()">
+    @if (points.length && currentPointsLength !== points.length) {
+    <button
+      [disabled]="!isPointsVisible"
+      type="button"
+      class="clear-button"
+      (click)="undoLastPoint()"
+    >
       Undo last point
     </button>
-    } @if(points.length && anyLinksContainText){
-    <button type="button" class="clear-button" (click)="openAllLinks()">
+    } @if(points.length){
+    <button
+      type="button"
+      class="clear-button"
+      [disabled]="!isPointsVisible || !anyLinksContainText"
+      (click)="openAllLinks()"
+    >
       Open all links
     </button>
     }
   </div>
+  <div class="left-picture" (click)="moveBackwardFit()">
+    <ng-icon name="bootstrapChevronLeft"></ng-icon>
+  </div>
+  <div class="right-picture" (click)="moveForwardFit()">
+    <ng-icon name="bootstrapChevronRight"></ng-icon>
+  </div>
 </div>
-<!-- modal -->
+
+<!-- Open Links modal -->
 <app-jw-modal [id]="'openAllFitWarning'">
   <div class="modal-wrapper">
     <h1>Warning:</h1>

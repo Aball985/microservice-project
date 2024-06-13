@@ -6,7 +6,7 @@ import {
   redirectUnauthorizedTo,
   redirectLoggedInTo,
 } from '@angular/fire/auth-guard';
-import { FitsComponent } from './components/pages/fits/fits.component';
+import { FitViewComponent } from './components/pages/view-fits/fit-view.component';
 import { LoginComponent } from './components/pages/login/login.component';
 
 export const routes: Routes = [
@@ -21,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'fits',
     title: 'Find & Share new fits',
-    component: FitsComponent,
+    component: FitViewComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/login'])),
   },
   {

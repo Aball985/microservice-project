@@ -3,7 +3,11 @@
     <div class="comment-top">
       <div class="profile">
         <span class="username">User</span>
-        <img class="profile-image" src="https://picsum.photos/30" alt="" />
+        <img
+          class="profile-image"
+          src="https://picsum.photos/30"
+          alt="User comment photo"
+        />
       </div>
     </div>
     <span>
@@ -18,7 +22,12 @@
         id="comment-input"
         placeholder="Enter a comment..."
       />
-      <ng-icon name="bootstrapHeart" />
+      <div class="heart-icon" (click)="toggleHeart()">
+        <ng-icon
+          [color]="isHeartClicked ? 'crimson' : ''"
+          [name]="!isHeartClicked ? 'bootstrapHeart' : 'bootstrapHeartFill'"
+        />
+      </div>
     </div>
   </div>
 </div>

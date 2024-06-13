@@ -31,6 +31,8 @@
 }
 
 .fit-button {
+  font-size: 1.25rem;
+  letter-spacing: 0.15rem;
   background-color: transparent;
   border: 2px solid white;
   outline: none;
@@ -38,6 +40,12 @@
   color: #fff;
   cursor: pointer;
   text-transform: uppercase;
+  &:hover {
+    font-weight: bold;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
 }
 
 .hero-wrapper {
@@ -52,14 +60,15 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding-top: 1rem;
   height: min-content;
   h1 {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
   }
   .squiggly-2 {
-    margin-top: -4rem;
+    margin-top: -5rem;
     width: 32rem !important;
+    height: 13rem;
   }
 }
 
@@ -67,5 +76,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 1rem;
+  gap: 1rem;
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.info-section {
+  display: flex;
+  gap: 4rem;
+  .image-container {
+    height: 50rem;
+  }
+  .info-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    width: 35ch;
+  }
+}
+
+@media (max-width: 1440px) {
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
