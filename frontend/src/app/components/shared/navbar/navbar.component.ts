@@ -5,8 +5,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { bootstrapChevronDown } from '@ng-icons/bootstrap-icons';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
-import { selectCurrentUser } from '../../../store/selectors/auth/auth.selector';
+import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat';
 @Component({
@@ -24,7 +23,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private store: Store,
     private afAuth: AngularFireAuth
   ) {
     // this.afAuth
@@ -41,7 +39,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getAuthState(): void {
-    this.currentUser$ = this.store.select(selectCurrentUser);
+    // this.currentUser$ = this.store.select(selectCurrentUser);
   }
 
   loginWithGoogle(): void {

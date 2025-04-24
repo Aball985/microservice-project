@@ -1,54 +1,42 @@
-<div class="home-wrapper">
-  <img
-    class="image-background"
-    ngSrc="/assets/aaabstract.webp"
-    width="200"
-    height="200"
-    alt="background-image"
-    priority
-  />
-  <div class="hero-wrapper">
-    <h1>Find your next Fit</h1>
-    <button type="button" class="fit-button" [routerLink]="['fits']">
-      Go to Fits
-    </button>
-  </div>
-</div>
+<app-hero />
+
 <section class="main-section">
   <h1>Welcome to Fitster</h1>
   <img
     class="squiggly-2"
     ngSrc="/assets/llline3.svg"
-    width="200"
-    height="200"
+    priority
+    fill
     alt="squiggly"
   />
 </section>
 <section class="categories-section">
   <h1>Choose from a wide variety of styles and categories!</h1>
   <div class="info-section">
-    <div class="image-container">
-      <img src="assets/example-fit.webp" alt="info-image" />
+    <div class="info-content">
+      <h2>Streetwear</h2>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          repudiandae reiciendis dolor odio ullam debitis cum cupiditate placeat
+          qui tempore numquam voluptatibus aut magnam voluptas, sint officia
+          vero error? Optio reprehenderit asperiores voluptatem labore itaque,
+          sapiente minus et maiores dolor expedita odit, doloribus doloremque.
+          Voluptatem, molestias. Iusto eos repellat illo?
+        </p>
+        <img
+          ngSrc="https://fakeimg.pl/250x150/?text=Placeholder_Image"
+          priority
+          width="5000"
+          height="1000"
+          alt="Side image"
+        />
+      </div>
     </div>
     <div class="info-text">
       <span>
         Check out all the latest trends and fits from a wide variety of creators
         and where to cop them all for yourself, only on Fitster.
-      </span>
-    </div>
-  </div>
-</section>
-<section class="categories-section">
-  <h1>Choose from a wide variety of styles and categories!</h1>
-  <div class="info-section">
-    <div class="image-container">
-      <img src="assets/example-fit.webp" alt="info-image" />
-    </div>
-    <div class="info-text">
-      <span>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero
-        doloribus delectus minus ad sapiente odio, enim unde asperiores,
-        adipisci mollitia maxime inventore odit ea ex.
       </span>
     </div>
   </div>

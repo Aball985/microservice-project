@@ -14,11 +14,6 @@ import { QrCodeComponent } from 'src/app/components/ui/qr-code/qr-code.component
 import { NgIconComponent } from '@ng-icons/core';
 import { ModalComponent } from 'src/app/components/shared/modal/modal.component';
 import { FormsModule } from '@angular/forms';
-import {
-  selectCoordinates,
-  selectXCoordinate,
-  selectYCoordinate,
-} from 'src/app/store/selectors/mouse/mouse-coordinates.selector';
 import { MouseCoordinatesState } from 'src/app/interfaces/mouse-coordinates.state';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { Fits } from 'src/app/interfaces/fit.interface';
@@ -33,7 +28,6 @@ import { Fits } from 'src/app/interfaces/fit.interface';
     AsyncPipe,
     FormsModule,
     NgOptimizedImage,
-    JsonPipe,
     ModalComponent,
     NgIconComponent,
     CommonModule,
@@ -64,7 +58,6 @@ export class FitsComponent implements OnInit {
   }
 
   constructor(
-    private store: Store,
     private domSanitizer: DomSanitizer,
     private modalService: ModalService
   ) {}
@@ -118,8 +111,8 @@ export class FitsComponent implements OnInit {
   }
 
   getCoordinateStoreSelects(): void {
-    this.x_Coord$ = this.store.select(selectXCoordinate);
-    this.y_Coord$ = this.store.select(selectYCoordinate);
+    // this.x_Coord$ = this.store.select(selectXCoordinate);
+    // this.y_Coord$ = this.store.select(selectYCoordinate);
   }
 
   clearPoints(): void {
@@ -131,18 +124,18 @@ export class FitsComponent implements OnInit {
   }
 
   plotPoint(): void {
-    this.store
-      .select(selectCoordinates)
-      .pipe(take(1))
-      .subscribe((newPoint: MouseCoordinatesState) => {
-        if (
-          (newPoint.x || newPoint.y) &&
-          !this.points.find((point) => point === newPoint) &&
-          this.points.length < this.maxNumberOfCords
-        ) {
-          this.points.push(newPoint);
-        }
-      });
+    // this.store
+    //   .select(selectCoordinates)
+    //   .pipe(take(1))
+    //   .subscribe((newPoint: MouseCoordinatesState) => {
+    //     if (
+    //       (newPoint.x || newPoint.y) &&
+    //       !this.points.find((point) => point === newPoint) &&
+    //       this.points.length < this.maxNumberOfCords
+    //     ) {
+    //       this.points.push(newPoint);
+    //     }
+    //   });
   }
 
   sanitizeUrl(url: string): SafeResourceUrl | undefined {

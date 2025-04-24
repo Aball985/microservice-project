@@ -1,23 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { authActions } from '../../store/actions/auth/auth.actions';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router,
-    private store: Store
   ) {
     this.fireAuth.user.subscribe((user: firebase.default.User | null) => {
       if (user) {
         const copyUser: firebase.default.User = JSON.parse(
           JSON.stringify(user)
         );
-        this.store.dispatch(authActions.login({ User: copyUser }));
+        // this.store.dispatch(authActions.login({ User: copyUser }));
       }
     });
   }
@@ -42,7 +39,7 @@ export class AuthService {
 
   signOut(): void {
     this.fireAuth.signOut().then(() => {
-      this.store.dispatch(authActions.logout());
+      // this.store.dispatch(authActions.logout());
       this.router.navigate(['login'], {
         relativeTo: this.router.routerState.root,
       });

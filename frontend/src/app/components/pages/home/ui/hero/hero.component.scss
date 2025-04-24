@@ -1,0 +1,24 @@
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  flex-direction: column;
+  position: relative;
+  height: 50rem;
+  h1 {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    letter-spacing: 0.25rem;
+  }
+}
+.image-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: -1;
+}

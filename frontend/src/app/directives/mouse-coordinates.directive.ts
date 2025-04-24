@@ -1,15 +1,13 @@
 import { MouseCoordinatesState } from '../interfaces/mouse-coordinates.state';
-import { FitActions } from '../store/actions/fits-actions/fits-actions';
 // app-track-mouse-coordinates.directive.ts
 import { Directive, HostListener, ElementRef } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 @Directive({
   standalone: true,
   selector: '[appTrackMouseCoordinates]',
 })
 export class TrackMouseCoordinatesDirective {
-  constructor(private el: ElementRef, private store: Store) {}
+  constructor(private el: ElementRef) {}
 
   @HostListener('mousemove', ['$event'])
   trackMouseCoordinates(event: MouseEvent): void {
@@ -29,6 +27,6 @@ export class TrackMouseCoordinatesDirective {
     };
 
     // Dispatch the action to update the state
-    this.store.dispatch(FitActions.plotFitCoordinate(MouseCoordinatesState));
+    // this.store.dispatch(FitActions.plotFitCoordinate(MouseCoordinatesState));
   }
 }
