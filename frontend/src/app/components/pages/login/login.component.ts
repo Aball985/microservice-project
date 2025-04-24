@@ -16,18 +16,15 @@ export class LoginComponent {
   emailTextInput: string = '';
   passwordTextInput: string = '';
 
-  constructor(private authService: AuthService) {}
-  // ngOnInit(): void {
-
-  // }
+  constructor(private _authService: AuthService) {}
 
   loginWithGoogle(): void {
-    this.authService.loginWithGoogle();
+    this._authService.loginWithGoogle();
   }
 
   logInWithEmailAndPassword(): void {
     if (this.emailTextInput && this.passwordTextInput) {
-      this.authService.loginWithEmail(
+      this._authService.loginWithEmail(
         this.emailTextInput,
         this.passwordTextInput
       );
@@ -36,7 +33,7 @@ export class LoginComponent {
 
   createNewUser(): void {
     if (this.emailTextInput && this.passwordTextInput) {
-      this.authService.signUp(this.emailTextInput, this.passwordTextInput);
+      this._authService.signUp(this.emailTextInput, this.passwordTextInput);
     }
   }
 }

@@ -7,24 +7,6 @@
   z-index: -1;
 }
 
-.fit-button {
-  font-size: 1.25rem;
-  letter-spacing: 0.15rem;
-  background-color: transparent;
-  border: 2px solid white;
-  outline: none;
-  padding: 1rem 2rem;
-  color: #fff;
-  cursor: pointer;
-  text-transform: uppercase;
-  &:hover {
-    font-weight: bold;
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #000;
-  }
-}
-
 .main-section {
   display: flex;
   align-items: center;

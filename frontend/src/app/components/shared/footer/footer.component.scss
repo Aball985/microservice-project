@@ -3,7 +3,11 @@
   font-size: 1.25rem;
 }
 .footer-wrapper {
-  padding-top: 1rem;
+  padding: 1rem;
+  background:#fff;
+  // position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
