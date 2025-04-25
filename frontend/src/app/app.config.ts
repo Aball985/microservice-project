@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from './environment';
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
-import Lara from '@primeng/themes/lara';
+import Aura from '@primeng/themes/aura';
 import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
-    providePrimeNG({ theme: { preset: Lara } }),
+    providePrimeNG({ theme: { preset: Aura } }),
     MessageService,
   ],
 };
