@@ -28,7 +28,7 @@ export class AppComponent {
       severity: 'info',
       summary: 'Info',
       detail: 'Message Content',
-      life: 3000,
+      life: 1000000,
     } as ToastMessageOptions);
   }
 }

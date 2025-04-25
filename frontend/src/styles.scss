@@ -75,3 +75,12 @@ h6 {
 * {
   min-width: 0 !important;
 }
+
+.p-toast-message-content {
+  background: #00000096;
+}
+
+.p-toast-message,
+.p-toast-message-content {
+  border-width: 0.25rem !important;
+}
