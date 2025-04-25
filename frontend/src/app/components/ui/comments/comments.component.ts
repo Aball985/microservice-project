@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { CommentComponent } from '../comment/comment.component';
 
 @Component({
-  selector: 'app-comments',
-  standalone: true,
-  templateUrl: './comments.component.html',
-  styleUrl: './comments.component.scss',
-  imports: [CommentComponent],
+    selector: 'app-comments',
+    templateUrl: './comments.component.html',
+    styleUrl: './comments.component.scss',
+    imports: [CommentComponent]
 })
 export class CommentsComponent {
   comments: any[] = [

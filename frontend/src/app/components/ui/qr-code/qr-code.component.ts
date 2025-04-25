@@ -2,11 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { QrService } from 'src/app/services/qr/qr.service';
 
 @Component({
-  selector: 'app-qr-code',
-  standalone: true,
-  imports: [],
-  templateUrl: './qr-code.component.html',
-  styleUrl: './qr-code.component.scss',
+    selector: 'app-qr-code',
+    imports: [],
+    templateUrl: './qr-code.component.html',
+    styleUrl: './qr-code.component.scss'
 })
 export class QrCodeComponent implements OnInit {
   @Input({ required: true }) qrCode: string = '';

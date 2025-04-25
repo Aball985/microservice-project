@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Component, inject, OnInit } from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { MouseCoordinatesState } from '../../../interfaces/mouse-coordinates.state';
 import { Observable } from 'rxjs';
@@ -21,10 +20,10 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { FitsComponent } from './fit/fit.component';
 import { Fits } from 'src/app/interfaces/fit.interface';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-fit-view',
-  standalone: true,
   templateUrl: './fit-view.component.html',
   styleUrl: './fit-view.component.scss',
   imports: [
@@ -106,8 +105,7 @@ export class FitViewComponent implements OnInit {
     //   link: 'https://www2.hm.com/en_us/productpage.0970819007.html',
     // },
   ];
-
-  constructor(private afAuth: AngularFireAuth) {}
+  private auth = inject(Auth); // ✅ Modular Firebase Auth
 
   ngOnInit(): void {
     this.handleLoadingPoints();
@@ -130,6 +128,6 @@ export class FitViewComponent implements OnInit {
   }
 
   logout(): void {
-    this.afAuth.signOut();
+    // this.afAuth.signOut();
   }
 }

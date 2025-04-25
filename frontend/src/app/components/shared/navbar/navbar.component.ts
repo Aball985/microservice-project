@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { bootstrapChevronDown } from '@ng-icons/bootstrap-icons';
-import { AuthService } from '../../../services/auth/auth.service';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat';
+import { Auth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
-  standalone: true,
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -17,22 +13,8 @@ import firebase from 'firebase/compat';
   viewProviders: [provideIcons({ bootstrapChevronDown })],
 })
 export class NavbarComponent implements OnInit {
-  currentUser$!: Observable<firebase.User | null>;
-
+  private authService = inject(AuthService);
   isProfileOpen: boolean = false;
-
-  constructor(
-    private authService: AuthService,
-    private afAuth: AngularFireAuth
-  ) {
-    // this.afAuth
-    //   .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-    //   .then(() => {
-    //     this.afAuth.onAuthStateChanged((user) => {
-    //       this.currentUser$ = of(user);
-    //     });
-    //   });
-  }
 
   ngOnInit(): void {
     this.getAuthState();
@@ -43,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.authService.loginWithGoogle();
+    // this.authService.signInWithPopup();
   }
 
   logOut(): void {

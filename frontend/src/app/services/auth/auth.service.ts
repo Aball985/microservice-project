@@ -1,48 +1,35 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { inject, Injectable, signal, Signal } from '@angular/core';
+import {
+  Auth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  User,
+} from '@angular/fire/auth';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
-  constructor(
-    private fireAuth: AngularFireAuth,
-    private router: Router,
-  ) {
-    this.fireAuth.user.subscribe((user: firebase.default.User | null) => {
-      if (user) {
-        const copyUser: firebase.default.User = JSON.parse(
-          JSON.stringify(user)
-        );
-        // this.store.dispatch(authActions.login({ User: copyUser }));
-      }
-    });
+  private auth = inject(Auth);
+
+  async googleSignIn() {
+    try {
+      await signInWithPopup(this.auth, new GoogleAuthProvider());
+    } catch (error) {
+      console.error('Google sign-in error', error);
+    }
   }
 
-  loginWithEmail(email: string, password: string): void {
-    this.fireAuth.signInWithEmailAndPassword(email, password).then(() => {
-      this.router.navigate([''], { relativeTo: this.router.routerState.root });
-    });
+  async signOut() {
+    try {
+      await signOut(this.auth);
+    } catch (error) {
+      console.error('Sign-out error', error);
+    }
   }
 
-  loginWithGoogle(): void {
-    this.fireAuth.signInWithPopup(new GoogleAuthProvider()).then(() => {
-      this.router.navigate([''], { relativeTo: this.router.routerState.root });
-    });
-  }
-
-  signUp(email: string, password: string): void {
-    this.fireAuth.createUserWithEmailAndPassword(email, password).then(() => {
-      this.router.navigate([''], { relativeTo: this.router.routerState.root });
-    });
-  }
-
-  signOut(): void {
-    this.fireAuth.signOut().then(() => {
-      // this.store.dispatch(authActions.logout());
-      this.router.navigate(['login'], {
-        relativeTo: this.router.routerState.root,
-      });
-    });
+  get user(): Signal<User | null> {
+    return signal<User | null>(this.auth.currentUser);
   }
 }

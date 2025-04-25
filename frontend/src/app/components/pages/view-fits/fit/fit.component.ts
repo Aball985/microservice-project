@@ -8,7 +8,6 @@ import {
   JsonPipe,
   NgOptimizedImage,
 } from '@angular/common';
-import { Store } from '@ngrx/store';
 import { FitSidebarComponent } from 'src/app/components/ui/fit-sidebar/fit-sidebar.component';
 import { QrCodeComponent } from 'src/app/components/ui/qr-code/qr-code.component';
 import { NgIconComponent } from '@ng-icons/core';
@@ -20,7 +19,6 @@ import { Fits } from 'src/app/interfaces/fit.interface';
 
 @Component({
   selector: 'app-fits',
-  standalone: true,
   templateUrl: './fit.component.html',
   styleUrls: ['./fit.component.scss'],
   imports: [

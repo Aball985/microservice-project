@@ -11,13 +11,12 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { bootstrapXLg } from '@ng-icons/bootstrap-icons';
 
 @Component({
-  selector: 'app-jw-modal',
-  imports: [NgIconComponent],
-  standalone: true,
-  templateUrl: 'modal.component.html',
-  styleUrls: ['modal.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  viewProviders: [provideIcons({ bootstrapXLg })],
+    selector: 'app-jw-modal',
+    imports: [NgIconComponent],
+    templateUrl: 'modal.component.html',
+    styleUrls: ['modal.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    viewProviders: [provideIcons({ bootstrapXLg })]
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input({ required: true }) id: string = '';

@@ -1,25 +1,28 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from './environment';
-import { provideHttpClient } from '@angular/common/http';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideFirestore } from '@angular/fire/firestore';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+import { routes } from './app.routes';
+import { providePrimeNG } from 'primeng/config';
+import Lara from '@primeng/themes/lara';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)), // ✅ Must come first
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideHttpClient(),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(),
     provideAnimationsAsync(),
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
+    providePrimeNG({ theme: { preset: Lara } }),
+    MessageService,
   ],
 };
